@@ -67,8 +67,8 @@ body {
 
 .card .error-message {
   position: absolute;
-  bottom: .1em;
-  right: .1em;
+  bottom: -3.5em;
+  right: -3em;
   color: red;
   font-size: 14px;
 }
@@ -410,6 +410,10 @@ body {
   -webkit-box-shadow: inset 21px -21px 25px #000000, inset -21px 21px 25px #000000;
           box-shadow: inset 21px -21px 25px #000000, inset -21px 21px 25px #000000;
   opacity: 20%;
+}
+
+.output-section-hidden {
+  display: none;
 }
 
 @media (min-width: 1500px) {

@@ -48,8 +48,8 @@ body{
     }
     .error-message{
         position: absolute;
-        bottom: .1em;
-        right: .1em;
+        bottom: -3.5em;
+        right: -3em;
         color: red;
         font-size: 14px;
     }
@@ -275,6 +275,9 @@ body{
             }
         }
     }
+}
+.output-section-hidden{
+    display: none;
 }
 
 //Large screens
