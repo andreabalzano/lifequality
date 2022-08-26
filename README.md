@@ -10,7 +10,7 @@ Una volta inviato il form tramite l'apposito pulsante, compariranno a schermo un
  <li><a href="https://www.w3.org/TR/CSS/">CSS</a></li>
  <li><a href="developer.mozilla.org/it/docs/Web/JavaScript">JavaScript</a></li>
  <li><a href="https://github.com/axios/axios">Axios</a></li>
- <li><a https://webpack.js.org/">Webpack</a></li>
+ <li><a href="https://webpack.js.org/">Webpack</a></li>
 </ul>
 
 <h2>Come Funziona:</h2>
