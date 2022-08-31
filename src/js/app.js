@@ -45,10 +45,10 @@ function findCity(){
     .then( resp => {
         response = resp.data;
         })
-        .finally(() => {
-            loaderIcon.remove();
-            PageResults();
-        })
+    .finally(() => {
+        loaderIcon.remove();
+        PageResults();
+    })
     //error response
     .catch( () => {
         errorMessage();
@@ -121,4 +121,5 @@ function errorMessage(){
     errorText.innerHTML = 'Try another city';
     pageElements.outputSection.className = "output-section-hidden";
     loaderIcon.remove();
+    location.reload();
 }
