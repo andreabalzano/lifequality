@@ -1,22 +1,49 @@
 //assets import
-import { PAGE_ELEMENTS, outputValue, errorText } from "./obj.js";
 import { progressBar } from "./progressbar.js";
 
+//html page elements
+const pageElements = {
+    inputText: document.getElementById('cinput'),
+    inputButton: document.getElementById('cbutton'),
+    outputSection: document.getElementById('coutput'),
+    form: document.querySelector('.search')
+}
+//value from axios
+export let outputValue = {};
+//text to create in case of error
+let errorText = document.createElement('p');
+let loaderIcon = document.createElement('div');
+
+
 //form submit event
-PAGE_ELEMENTS.form.addEventListener('submit', async function(e){
+pageElements.form.addEventListener('submit', async function(e){
     e.preventDefault();
-    findCity();
+    pageElements.outputSection.className = "";
+    pageElements.outputSection.innerHTML = "";
+    outputValue = {};
+    response = "";
+    errorText.remove();
+    loadingStatus();
 });
+
+//loading status
+function loadingStatus() {
+    loaderIcon.className = "data-loader";
+    pageElements.form.appendChild(loaderIcon);
+    findCity();
+}
 
 //api call using Axios
 let response;
 function findCity(){
-    axios.get(`https://api.teleport.org/api/urban_areas/slug:${PAGE_ELEMENTS.inputText.value.replace(/\s/g, '-').toLowerCase()}/scores/`)
+    axios.get(`https://api.teleport.org/api/urban_areas/slug:${pageElements.inputText.value.replace(/\s/g, '-').toLowerCase()}/scores/`)
     //positive response
     .then( resp => {
         response = resp.data;
-        errorText.remove();
-        PageResults();
+        })
+        .finally(() => {
+            loaderIcon.remove();
+            PageResults();
         })
     //error response
     .catch( () => {
@@ -25,17 +52,17 @@ function findCity(){
 };
 
 //page visualize results
-async function PageResults(){
+function PageResults(){
     //values
-    outputValue.cityName = await PAGE_ELEMENTS.inputText.value;
-    outputValue.citySummary = await response.summary;
-    outputValue.cityScore = await response.teleport_city_score.toFixed(0);
-    outputValue.houseScoring = await response.categories.at(0).score_out_of_10.toFixed(0);
-    outputValue.costOfLiving = await response.categories.at(1).score_out_of_10.toFixed(0);
-    outputValue.StartupScoring = await response.categories.at(2).score_out_of_10.toFixed(0);
+    outputValue.cityName = pageElements.inputText.value;
+    outputValue.citySummary = response.summary;
+    outputValue.cityScore = response.teleport_city_score.toFixed(0);
+    outputValue.houseScoring = response.categories.at(0).score_out_of_10.toFixed(0);
+    outputValue.costOfLiving = response.categories.at(1).score_out_of_10.toFixed(0);
+    outputValue.StartupScoring = response.categories.at(2).score_out_of_10.toFixed(0);
     //print the value in the html page
-    PAGE_ELEMENTS.outputSection.className = "output-section";
-    PAGE_ELEMENTS.outputSection.innerHTML = 
+    pageElements.outputSection.className = "output-section";
+    pageElements.outputSection.innerHTML =
             `
             <h2>${outputValue.cityName}</h2>
             <div class="card">
@@ -86,7 +113,8 @@ async function PageResults(){
 //error message visualize
 function errorMessage(){
     errorText.className = 'error-message';
-    PAGE_ELEMENTS.form.appendChild(errorText);
+    pageElements.form.appendChild(errorText);
     errorText.innerHTML = 'Try another city';
-    PAGE_ELEMENTS.outputSection.className = "output-section-hidden";
+    pageElements.outputSection.className = "output-section-hidden";
+    loaderIcon.remove();
 }

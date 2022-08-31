@@ -3,12 +3,13 @@ $secondary-color: #e5e5e5;
 $tertiary-color: #001f3f;
 
 *{
-    padding: 0;
-    margin: 0;
+    box-sizing: border-box;
     width: 100%;
 }
 
 body{
+    padding: 0;
+    margin: 0;
     font-family: sans-serif;
     background-color: $primary-color;
 }
@@ -25,7 +26,7 @@ body{
         text-align: center;
         margin-bottom: calc(.6em - 4vmin);
         color: $tertiary-color;
-    }        
+    }
 }
 
 .card{
@@ -48,7 +49,7 @@ body{
     }
     .error-message{
         position: absolute;
-        bottom: -3.5em;
+        bottom: -5.5em;
         right: -3em;
         color: red;
         font-size: 14px;
@@ -57,6 +58,22 @@ body{
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+        //loader
+        .data-loader {
+            border: 4px solid #afafaf;
+            border-top: 4px solid $tertiary-color;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         #cinput{
             width: 40%;
             height: 1.9em;
@@ -254,7 +271,7 @@ body{
                     transform: translate(-50%, -50%);
                     p{
                         text-align: center;
-                        font-size: 3.7rem;
+                        font-size: 4rem;
                         font-weight: bold;
                         color: $primary-color;
                     }
@@ -276,9 +293,7 @@ body{
         }
     }
 }
-.output-section-hidden{
-    display: none;
-}
+
 
 //Large screens
 @media (min-width: 1500px){
