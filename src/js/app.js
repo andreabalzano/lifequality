@@ -121,5 +121,4 @@ function errorMessage(){
     errorText.innerHTML = 'Try another city';
     pageElements.outputSection.className = "output-section-hidden";
     loaderIcon.remove();
-    location.reload();
 }
