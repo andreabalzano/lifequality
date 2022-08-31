@@ -27,4 +27,4 @@ Infine è stato creato un bundle con webPack per l'oupload su server. I file sor
 <h2>Dove Utilizzarlo</h2>
 Il codice sorgente di tutto il progetto è caricato in questa repository github.<br>
 Per provare l'applicazione si può procedere a questo indirizzo: https://lifequality.vercel.app<br>
-Una volta sulla pagina basterà scrivere il nome di una vittà (in inglese) nel textbox e premere il pulsante.
+Una volta sulla pagina basterà scrivere il nome di una città (in inglese) nel textbox e premere il pulsante.
