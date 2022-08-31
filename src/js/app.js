@@ -18,13 +18,17 @@ let loaderIcon = document.createElement('div');
 //form submit event
 pageElements.form.addEventListener('submit', async function(e){
     e.preventDefault();
+    clearData();
+});
+
+function clearData(){
     pageElements.outputSection.className = "";
     pageElements.outputSection.innerHTML = "";
     outputValue = {};
     response = "";
     errorText.remove();
     loadingStatus();
-});
+}
 
 //loading status
 function loadingStatus() {
